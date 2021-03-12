@@ -115,3 +115,15 @@ print (var1)
 print ('////////@@@FINAL_PUISS@@@@//////')
 print (puiss1)
 
+
+
+len_res = len(var1)
+print (len_res)
+
+t = 0
+while t < len_res :
+    var1[t] = str(var1[t]) + '*' + puiss1[t]
+    t += 1
+
+print ('#########RESULT#########')
+print (var1)
