@@ -29,9 +29,15 @@ else :
     while i < len1:
         x = param1[i].replace(' ', '')
         if '*' in x :
+            
             x = x.split('*')
-            var1.append(x[0])
-            puiss1.append(x[1])
+            if x[1][-1] == 'X' or x[1][-1] == 'x':
+                x[1] = x[1] + '^1'
+            var1.append(x[0]) 
+            puiss1.append(x[1].upper())
+        else :
+            var1.append(x)
+            puiss1.append('X^0')
         i += 1
 
     j = 0
@@ -39,8 +45,14 @@ else :
         x = param2[j].replace(' ', '')
         if '*' in x :
             x = x.split('*')
+            if x[1][-1] == 'X' or x[1][-1] == 'x':
+                x[1] = x[1] + '^1'
+
             var2.append(x[0])
-            puiss2.append(x[1])
+            puiss2.append(x[1].upper())
+        else :
+            var2.append(x)
+            puiss2.append('X^0')
         j += 1
     
     print (var1)
@@ -72,6 +84,10 @@ else :
         u = 0
         while u < len2:
             if puiss1[k] == puiss2[u] :
+                print ('puiss1')
+                print (puiss1[k])
+                print ('puiss2')
+                print (puiss2[u])
                 var1[k] = float(var1[k]) - float(var2[u])
                 exist.append(puiss2[u])
 
@@ -127,3 +143,10 @@ while t < len_res :
 
 print ('#########RESULT#########')
 print (var1)
+
+new = sorted(var1, key=lambda x: int(x[-1]))
+
+print ('///new///')
+print (new)
+
+
