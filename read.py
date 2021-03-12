@@ -32,8 +32,6 @@ else :
             x = x.split('*')
             var1.append(x[0])
             puiss1.append(x[1])
-        
-
         i += 1
 
     j = 0
@@ -43,16 +41,14 @@ else :
             x = x.split('*')
             var2.append(x[0])
             puiss2.append(x[1])
-        
-
         j += 1
     
-    # print (var1)
-    # print (puiss1)
-    # print ('=================')
-    # print (var2)
-    # print (puiss2)
-    # print ('=================')
+    print (var1)
+    print (puiss1)
+    print ('=================')
+    print (var2)
+    print (puiss2)
+    print ('=================')
 
     # len_var = len1 - len2
     # if len_var > 0 :
@@ -68,9 +64,9 @@ else :
        
     #     k += 1 
 
+
+
     exist = []
-
-
     k = 0
     while k < len1:
         u = 0
@@ -87,21 +83,23 @@ else :
 # print ('////////@@@VAR1@@@@//////')
 # print (var1)
 
-# print ('////// @@@@@exist@@@@ ////////')
-# print (exist)
+print ('////// @@@@@exist@@@@ ////////')
+print (exist)
 
 
-# print ('////// @@@@@DIFF@@@@ ////////')
+print ('////// @@@@@DIFF@@@@ ////////')
 # XOR operator: 
 diff = set(exist) ^ set(puiss2)
-# print (diff)
+
+print (diff)
 
 for di in diff :
     i = 0 
     while i < len(puiss2):
         if di == puiss2[i] :
-            # print (di)
+            print (di)
             # print (i)
+            puiss1.append(di)
             var1.append(int(var2[i]) * -1)
         i += 1
     # if di in puiss2 :
@@ -111,5 +109,9 @@ for di in diff :
     #         if 
 
 
-print ('////////@@@FINAL@@@@//////')
+print ('////////@@@FINAL_VAR@@@@//////')
 print (var1)
+
+print ('////////@@@FINAL_PUISS@@@@//////')
+print (puiss1)
+
