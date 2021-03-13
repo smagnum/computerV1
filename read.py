@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 def duplicates(lst, item):
     return [i for i, x in enumerate(lst) if x == item]
@@ -69,30 +70,42 @@ else :
             puiss2.append('X^0')
         j += 1
 
-    print (var1)
-    print (puiss1)
-    print (var2)
-    print (puiss2)
+    # print (var1)
+    # print (puiss1)
+    # print (var2)
+    # print (puiss2)
     
     # CHECK DUPLICATED
     print ('MAINTENANCE')
     dup = duplicates(puiss1, puiss1[0])
+    print ('dup')
     print (dup)
+    print ()
+    print (var1)
 
     i = 1
     while i < len(dup):
+        var1[dup[0]] = float(var1[dup[0]]) + float(var1[dup[i]])
+        i += 1
+
+    i = len(dup) - 1
+    while i >= 1:
+
+        
+        print ('var1')
         print (var1)
-        var1[dup[0]] = float(var1[dup[0]]) + float(var1[dup[j]])
-        i += 1
-    
-    i = 1 
-    while i < len(dup):
-        # del(puiss1[dup[i]])
-        print ('HAAAAAHUWA')
-        print (var1[dup[i]])
-        i += 1
+        print ('dup')
+        print (dup)
+        print (dup[i])
+        del var1[dup[i]]
+        
+        i -=1 
+
+
+        
     print ('var1')
     print (var1)
+    print ()
 
     print ('MAINTENANCE')
 
@@ -133,22 +146,56 @@ else :
     #     i += 1
 
 
+# SECONDE
 
-    i = 0
-    while i < len(puiss2):
-        dup = duplicates(puiss2, puiss2[i])
-        if len(dup) > 1:
-            j = 1
-            while j < len(dup) :
-                # print (dup[j])
-                print (i)
-                
-                var2[dup[0]] = float(var2[dup[0]]) + float(var2[dup[j]])
-                del(puiss2[dup[j]])
-                del(var2[dup[j]])
-                j+=1
-            # print (dup)
+    print ('MAINTENANCE')
+    dup = duplicates(puiss2, puiss2[0])
+    print ('dup')
+    print (dup)
+    print ()
+    print (var2)
+
+    i = 1
+    while i < len(dup):
+        var2[dup[0]] = float(var2[dup[0]]) + float(var2[dup[i]])
         i += 1
+
+    i = len(dup) - 1
+    while i >= 1:
+
+        
+        print ('var2')
+        print (var2)
+        print ('dup')
+        print (dup)
+        print (dup[i])
+        del var2[dup[i]]
+        
+        i -=1 
+
+
+        
+    print ('var2')
+    print (var2)
+    print ()
+
+    print ('MAINTENANCE')
+
+    # i = 0
+    # while i < len(puiss2):
+    #     dup = duplicates(puiss2, puiss2[i])
+    #     if len(dup) > 1:
+    #         j = 1
+    #         while j < len(dup) :
+    #             # print (dup[j])
+    #             print (i)
+                
+    #             var2[dup[0]] = float(var2[dup[0]]) + float(var2[dup[j]])
+    #             del(puiss2[dup[j]])
+    #             del(var2[dup[j]])
+    #             j+=1
+    #         # print (dup)
+    #     i += 1
 
     # print (var1)
     # print (puiss1)
@@ -242,8 +289,8 @@ else :
     # print ('////////@@@FINAL_PUISS@@@@//////')
     # print (puiss1)
 
-    print (var1)
-    print (puiss1)
+    # print (var1)
+    # print (puiss1)
 
 
 
