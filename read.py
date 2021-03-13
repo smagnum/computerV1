@@ -336,8 +336,28 @@ else :
 
         new = sorted(var1, key=lambda x: int(x[-1]))
 
+        variables = []
+
+        for n in new:
+            variables.append(n)
         print ('///new///')
-        print (new)
+        # print (new)
+        
+        reduce_form = 'Reduce form : '
+        i = 0
+        while i < len(new):
+            if i != len(new) - 1:
+                if new[i + 1][0]  == '-':
+                    reduce_form += new[i] + ' - '
+                    new[i + 1] = new[i + 1][1:]
+                else :
+                    reduce_form += new[i] + ' + '
+            else :
+                reduce_form += new[i]
+            i += 1
+        reduce_form += ' = 0'
+        print (reduce_form)
+        print (variables)
     except:
         print('Bad format')
 
