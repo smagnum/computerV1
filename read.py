@@ -111,6 +111,7 @@ else :
         i = 1
         while i < len(dup):
             var1[dup[0]] = float(var1[dup[0]]) + float(var1[dup[i]])
+            var1[dup[0]] = round(var1[dup[0]], 6)
             i += 1
 
         i = len(dup) - 1
@@ -175,6 +176,7 @@ else :
         i = 1
         while i < len(dup):
             var2[dup[0]] = float(var2[dup[0]]) + float(var2[dup[i]])
+            var2[dup[0]] = round(var2[dup[0]], 6)
             i += 1
 
 
@@ -338,6 +340,15 @@ else :
 
     # print ('#########RESULT#########')
     # print (var1)
+
+
+    i = 0
+    while i < len(var1):
+        var1[i].split('*')
+        if int(var1[i][0]) == 0 :
+            var1.remove(var1[i])
+        i+= 1
+
     oss = '^'
     new = sorted(var1, key=lambda x: int(x[x.index(oss) + len(oss):]))
 
@@ -347,6 +358,13 @@ else :
         variables.append(n)
     # print ('///new///')
     # print (new)
+
+    print (var1)
+    print (new)
+    print (variables)
+
+
+
     
     reduce_form = 'Reduce form : '
     i = 0
@@ -377,10 +395,9 @@ else :
         if variables[i][-1] == '2' :
             a = variables[i].split('*')
             a = float(a[0])
-    
-
         i += 1
     
+
     degree = variables[-1].split('^')
     degree = degree[1]
     print ('Polynomial degree: ' + str(degree))
@@ -406,8 +423,8 @@ else :
         print ("There is no solution")
 
     elif a == 0:
-        print ("The only solution is :")
-        print(-c/b)
+        print (" 1 The only solution is :")
+        print(round(-c/b, 6))
 
     else:
 
@@ -417,20 +434,22 @@ else :
 
         if delt > 0:
             # print ("D > 0")
-            print("The solutions is : ") 
-            print((-b+math.sqrt(delt))/(2*a)); 
-            print((-b-math.sqrt(delt))/(2*a)); 
+            print(" 2 The solutions is : ") 
+            sol1 = (-b+math.sqrt(delt))/(2*a) 
+            sol2 = (-b-math.sqrt(delt))/(2*a) 
+            print(round(sol1, 6)); 
+            print(round(sol2, 6)); 
 
         elif delt == 0:
             print ("D == 0")
-            print ("The only solution is : ")
-            print(((-b)/(2*a))); 
+            print (" 3 The only solution is : ")
+            print(round((-b)/(2*a), 6)); 
 
         elif delt < 0:
             print ("D < 0")
-            print ("The solutions is : ")
-            print (str(-b / (2*a)) + " + i * " + str(math.sqrt(-delt)/(2*a)))
-            print (str(-b / (2*a)) + " - i * " + str(math.sqrt(-delt)/(2*a)))
+            print (" 4 The solutions is : ")
+            print (str(-b / (2*a)) + " + i * " + str(round(math.sqrt(-delt)/(2*a), 6)))
+            print (str(-b / (2*a)) + " - i * " + str(round(math.sqrt(-delt)/(2*a), 6)))
 
     # except:
     #     print('Bad format')
