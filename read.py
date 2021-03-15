@@ -55,7 +55,7 @@ else :
             x = '1*' + x
         elif x[0] == '-' and x[1].upper() == 'X':
             # x = '-1*X^1'
-            x = '-1*' + x
+            x = '-1*' + x[1:]
         if '*' in x :
             x = x.split('*')
             if x[1][-1] == 'X' or x[1][-1] == 'x':
@@ -76,11 +76,12 @@ else :
             x = '1*' + x
         elif x[0] == '-' and x[1].upper() == 'X':
             # x = '-1*X^1'
-            x = '-1*' + x
+            x = '-1*' + x[1:]
         if '*' in x :
             x = x.split('*')
             if x[1][-1] == 'X' or x[1][-1] == 'x':
                 x[1] = x[1] + '^1'
+        
 
             var2.append(x[0])
             puiss2.append(x[1].upper())
@@ -95,31 +96,37 @@ else :
     # print (puiss2)
     
     # CHECK DUPLICATED
-    i = 0
-    while i < len(puiss1):
-        dup = duplicates(puiss1, puiss1[i])
-        i +=1
+    j = 0
+    while j < len(puiss1):
+        dup = duplicates(puiss1, puiss1[j])
+        if len(dup) > 1 :
+            i = 1
+            while i < len(dup):
+                var1[dup[0]] = float(var1[dup[0]]) + float(var1[dup[i]])
+                var1[dup[0]] = round(var1[dup[0]], 6)
+                i += 1
 
-    if len(dup) == 1 :
-        dup = duplicates(puiss1, puiss1[0])
+            i = len(dup) - 1
+            while i >= 1:
+                del var1[dup[i]]
+                del puiss1[dup[i]]
+                
+                i -=1 
+        # print (dup)
+        j +=1
+
+    # print ('-------------')
+    # print (dup )
+
+    # if len(dup) == 1 :
+    #     dup = duplicates(puiss1, puiss1[0])
+    # print (dup)
 
 
 
     # print ('ADFGADSGADGADSDS')
     # print (dup)
-    if len(dup) > 1 :
-        i = 1
-        while i < len(dup):
-            var1[dup[0]] = float(var1[dup[0]]) + float(var1[dup[i]])
-            var1[dup[0]] = round(var1[dup[0]], 6)
-            i += 1
-
-        i = len(dup) - 1
-        while i >= 1:
-            del var1[dup[i]]
-            del puiss1[dup[i]]
-            
-            i -=1 
+    
 
         # print (var1)
 
@@ -164,28 +171,29 @@ else :
 
 # SECONDE
 
-
-    while i < len(puiss2):
-        dup = duplicates(puiss2, puiss2[i])
-        i +=1
-
-    if len(dup) == 1 :
-        dup = duplicates(puiss2, puiss2[0])
-
-    if len(dup) > 1 :
-        i = 1
-        while i < len(dup):
-            var2[dup[0]] = float(var2[dup[0]]) + float(var2[dup[i]])
-            var2[dup[0]] = round(var2[dup[0]], 6)
-            i += 1
+    j = 0
+    while j < len(puiss2):
+        dup = duplicates(puiss2, puiss2[j])
+        if len(dup) > 1 :
+            i = 1
+            while i < len(dup):
+                var2[dup[0]] = float(var2[dup[0]]) + float(var2[dup[i]])
+                var2[dup[0]] = round(var2[dup[0]], 6)
+                i += 1
 
 
-        i = len(dup) - 1
-        while i >= 1:
-            del var2[dup[i]]
-            del puiss2[dup[i]]
-            
-            i -=1 
+            i = len(dup) - 1
+            while i >= 1:
+                del var2[dup[i]]
+                del puiss2[dup[i]]
+                
+                i -=1 
+        j +=1
+
+    # if len(dup) == 1 :
+    #     dup = duplicates(puiss2, puiss2[0])
+
+
 
 
     # print ('var1')
@@ -248,6 +256,9 @@ else :
 
 
     # CHECK the same puiss and do addition
+
+    # print (puiss1)
+    # print (puiss2)
     len1 = len(puiss1)
     len2 = len(puiss2)
     exist = []
@@ -345,8 +356,11 @@ else :
     i = 0
     while i < len(var1):
         var1[i].split('*')
-        if int(var1[i][0]) == 0 :
-            var1.remove(var1[i])
+        try :
+            if int(var1[i][0]) == 0 :
+                var1.remove(var1[i])
+        except :
+            askdjf= 0
         i+= 1
 
     oss = '^'
@@ -359,12 +373,19 @@ else :
     # print ('///new///')
     # print (new)
 
-    print (var1)
+    # print (var1)
+    # print (new)
+    # print (variables)
+
+
+
     print (new)
-    print (variables)
 
-
-
+    i = 0
+    while i < len(new) :
+        if 'X^0' in new[i] :
+            print (new[i])df
+        i += 1
     
     reduce_form = 'Reduce form : '
     i = 0
