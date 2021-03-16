@@ -1,9 +1,72 @@
 import sys
-import math
+# import math
 import numpy as np
 
 def duplicates(lst, item):
     return [i for i, x in enumerate(lst) if x == item]
+
+# def sqrt(x):
+#     last_guess= x/2.0
+#     while True:
+#         guess= (last_guess + x/last_guess)/2
+#         if abs(guess - last_guess) < .000001: # example threshold
+#             return guess
+#         last_guess= guess
+
+
+# print(sqrt(25))
+
+
+
+# Python3 implementation of the approach 
+# import math 
+  
+# Recursive function that returns square root 
+# of a number with precision upto 5 decimal places 
+def Square(n, i, j): 
+  
+    mid = (i + j) / 2; 
+    mul = mid * mid; 
+  
+    # If mid itself is the square root, 
+    # return mid 
+    if ((mul == n) or (abs(mul - n) < 0.00001)): 
+        return mid; 
+  
+    # If mul is less than n, recur second half 
+    elif (mul < n): 
+        return Square(n, mid, j); 
+  
+    # Else recur first half 
+    else: 
+        return Square(n, i, mid); 
+  
+# Function to find the square root of n 
+def findSqrt(n): 
+    i = 1; 
+  
+    # While the square root is not found 
+    found = False; 
+    while (found == False): 
+  
+        # If n is a perfect square 
+        if (i * i == n): 
+            print(i); 
+            found = True; 
+          
+        elif (i * i > n): 
+  
+            # Square root will lie in the 
+            # interval i-1 and i 
+            res = Square(n, i - 1, i); 
+            print ("{0:.5f}".format(res))  
+            found = True
+        i += 1; 
+  
+# Driver code 
+
+  
+# This code is contributed by 29AjayKumar 
 
 if len(sys.argv) != 2 :
     print ('Invalid arguments')
@@ -474,8 +537,8 @@ else :
             if delt > 0:
                 # print ("D > 0")
                 print(" 2 The solutions is : ") 
-                sol1 = (-b+math.sqrt(delt))/(2*a) 
-                sol2 = (-b-math.sqrt(delt))/(2*a) 
+                sol1 = (-b+findSqrt(delt))/(2*a) 
+                sol2 = (-b-findSqrt(delt))/(2*a) 
                 print(round(sol1, 6)); 
                 print(round(sol2, 6)); 
 
@@ -487,8 +550,8 @@ else :
             elif delt < 0:
                 print ("D < 0")
                 print (" 4 The solutions is : ")
-                print (str(-b / (2*a)) + " + i * " + str(round(math.sqrt(-delt)/(2*a), 6)))
-                print (str(-b / (2*a)) + " - i * " + str(round(math.sqrt(-delt)/(2*a), 6)))
+                print (str(-b / (2*a)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
+                print (str(-b / (2*a)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)))
 
     except:
         print('Bad format')
