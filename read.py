@@ -461,8 +461,7 @@ else :
         # print ('#########RESULT#########')
         # print (var1)
 
-        oss = '^'
-        new = sorted(var1, key=lambda x: int(x[x.index(oss) + len(oss):]))
+        
         
         i = 0
         while i < len(var1):
@@ -474,14 +473,20 @@ else :
                 askdjf= 0
             i+= 1
 
-        
+
+        oss = '^'
+        new = sorted(var1, key=lambda x: int(x[x.index(oss) + len(oss):]))
 
         variables = []
 
         for n in new:
             variables.append(n)
-            
-    
+
+        print (len(variables))
+        if len(variables) == 0 :
+            print ('all is solution HAHA')
+            sys.exit()            
+        sdfdsfdsfdf
     except :
         print ('Bad format')
         sys.exit()
@@ -530,83 +535,86 @@ else :
     # print (variables)
 
 
-    # try :
-    i = 0
-    while i < len(variables):
-        if variables[i][-1] == '0' :
-            c = variables[i].split('*')
-            c = float(c[0])
+    try :
+        i = 0
+        while i < len(variables):
+            if variables[i][-1] == '0' :
+                c = variables[i].split('*')
+                c = float(c[0])
 
-        if variables[i][-1] == '1' :
-            b = variables[i].split('*')
-            b = float(b[0])
-    
-        if variables[i][-1] == '2' :
-            a = variables[i].split('*')
-            a = float(a[0])
-        i += 1
-    
+            if variables[i][-1] == '1' :
+                b = variables[i].split('*')
+                b = float(b[0])
+        
+            if variables[i][-1] == '2' :
+                a = variables[i].split('*')
+                a = float(a[0])
+            i += 1
+        
 
-    degree = variables[-1].split('^')
-    degree = degree[1]
-    print ('Polynomial degree: ' + str(degree))
+        degree = variables[-1].split('^')
+        degree = degree[1]
+        print ('Polynomial degree: ' + str(degree))
 
-    # except :
-    #     print ('Bad format')
-    #     sys.exit()
+    except :
+        print ('Bad format')
+        sys.exit()
 
 
+    Q = False
     try :
         if int(degree) > 2 :
             print ("The polynomial degree is strictly greater than 2, I can't solve.")
-            sys.exit()
+            Q = True
+            # sys.exit()
 
-        if 'a' not in globals():
-            a = 0
+        if Q != True :
+            if 'a' not in globals():
+                a = 0
 
-        if 'b' not in globals():
-            b = 0
+            if 'b' not in globals():
+                b = 0
 
-        if 'c' not in globals():
-            c = 0
+            if 'c' not in globals():
+                c = 0
 
-                
-        if a == 0 and b == 0 and c == 0:
-            print ("All real numbers is a solution")
+                    
+            if a == 0 and b == 0 and c == 0:
+                print ("All real numbers is a solution")
 
-        elif a == 0 and b == 0 and c != 0:
-            print ("There is no solution")
+            elif a == 0 and b == 0 and c != 0:
+                print ("There is no solution")
 
-        elif a == 0:
-            print (" 1 The only solution is :")
-            print(round(-c/b, 6))
+            elif a == 0:
+                print (" 1 The only solution is :")
+                print(round(-c/b, 6))
 
-        else:
+            else:
 
-            delt = (b*b) - (4*a*c)
+                delt = (b*b) - (4*a*c)
 
 
-            # print (delt)
+                # print (delt)
 
-            if delt > 0:
-                # print ("D > 0")
-                print(" 2 The solutions is : ") 
+                if delt > 0:
+                    # print ("D > 0")
+                    print(" 2 The solutions is : ") 
 
-                sol1 = (-b+findSqrt(delt))/(2*a) 
-                sol2 = (-b-findSqrt(delt))/(2*a) 
-                print(round(sol1, 6)); 
-                print(round(sol2, 6)); 
+                    sol1 = (-b+findSqrt(delt))/(2*a) 
+                    sol2 = (-b-findSqrt(delt))/(2*a) 
+                    print(round(sol1, 6)); 
+                    print(round(sol2, 6)); 
 
-            elif delt == 0:
-                print ("D == 0")
-                print (" 3 The only solution is : ")
-                print(round((-b)/(2*a), 6)); 
+                elif delt == 0:
+                    print ("D == 0")
+                    print (" 3 The only solution is : ")
+                    print(round((-b)/(2*a), 6)); 
 
-            elif delt < 0:
-                print ("D < 0")
-                print (" 4 The solutions is : ")
-                print (str(-b / (2*a)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
-                print (str(-b / (2*a)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)))
+                elif delt < 0:
+                    print ("D < 0")
+                    print (" 4 The solutions is : ")
+                    print (str(-b / (2*a)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
+                    print (str(-b / (2*a)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)))
     except :
         print ('Bad format')
         sys.exit()
