@@ -184,7 +184,7 @@ else :
     try :
         len1 = len(puiss1)
         len2 = len(puiss2)
-        exist = []
+        # exist = []
         k = 0
         while k < len1:
             u = 0
@@ -192,8 +192,7 @@ else :
                 if puiss1[k] == puiss2[u] :
         
                     var1[k] = float(var1[k]) - float(var2[u])
-                    exist.append(puiss2[u])
-
+                    # exist.append(puiss2[u])
                 u += 1
 
             k += 1
@@ -201,22 +200,23 @@ else :
         print ('Bad format')
         sys.exit()
 
-
-    try :
+    # print (exist)
+    # print (puiss2)
+    # try :
  
-        diff = set(exist) ^ set(puiss2)
-
-        for di in diff :
-            i = 0 
-            while i < len(puiss2):
-                if di == puiss2[i] :
+    #     diff = set(exist) ^ set(puiss2)
+    #     print (diff)
+    #     for di in diff :
+    #         i = 0 
+    #         while i < len(puiss2):
+    #             if di == puiss2[i] :
            
-                    puiss1.append(di)
-                    var1.append(int(var2[i]) * -1)
-                i += 1
-    except :
-        print ('Bad format')
-        sys.exit()
+    #                 puiss1.append(di)
+    #                 var1.append(int(var2[i]) * -1)
+    #             i += 1
+    # except :
+    #     print ('Bad format')
+    #     sys.exit()
 
 
 
@@ -244,10 +244,10 @@ else :
                 askdjf= 0
             i+= 1
 
-
+   
         oss = '^'
         new = sorted(var1, key=lambda x: int(x[x.index(oss) + len(oss):]))
-
+  
         variables = []
 
         for n in new:
