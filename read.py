@@ -10,7 +10,7 @@ def Square(n, i, j):
     mid = (i + j) / 2; 
     mul = mid * mid; 
  
-    if ((mul == n) or (abs(mul - n) < 0.00001)): 
+    if ((mul == n) or (abs(mul - n) < 0.00000000001)): 
         return mid; 
     elif (mul < n): 
         return Square(n, mid, j); 
@@ -95,6 +95,12 @@ else :
                 x = '-1*' + x[1:]
             if '*' in x :
                 x = x.split('*')
+
+                if len(x) > 2 :
+                    print ('Bad format')
+                    df = 0
+                    sys.exit()
+
                 if x[1][-1] == 'X' or x[1][-1] == 'x':
                     x[1] = x[1] + '^1'
                 var1.append(x[0]) 
@@ -127,9 +133,56 @@ else :
                 puiss2.append('X^0')
             j += 1
     except :
-        print ('Bad format')
+        if not 'df' in globals():
+            print ('Bad format')
         sys.exit()
 
+
+
+    # Check vars and puiss :
+    for var in var1 :
+        try :
+            float(var)
+        except :
+            print ('Bad format')
+            sys.exit()
+
+    for var in var1 :
+        try :
+            float(var)
+        except :
+            print ('Bad format')
+            sys.exit()
+
+    for puiss in puiss1 :
+        if puiss[0] != 'X' :
+            print ('Bad format')
+            sys.exit()
+
+        if puiss[1] != '^' :
+            print ('Bad format')
+            sys.exit()
+
+        try :
+            float(puiss[2])
+        except :
+            print ('Bad format')
+            sys.exit()
+        
+    for puiss in puiss2 :
+        if puiss[0] != 'X' :
+            print ('Bad format')
+            sys.exit()
+
+        if puiss[1] != '^' :
+            print ('Bad format')
+            sys.exit()
+
+        try :
+            float(puiss[2])
+        except :
+            print ('Bad format')
+            sys.exit()
 
     # Check duplicated Puiss
     try :
@@ -213,14 +266,14 @@ else :
                 if di == puiss2[i] :
            
                     puiss1.append(di)
-                    var1.append(int(var2[i]) * -1)
+                    var1.append(float(var2[i]) * -1)
                 i += 1
     except:
         print ('Bad format')
         sys.exit()
 
 
-
+    
     # Add puissance to vaiables
     try :
 
@@ -233,6 +286,7 @@ else :
 
 
 
+
         i = 0
         while i < len(var1):
             var1[i].split('*')
@@ -240,16 +294,16 @@ else :
             if len(var1) == 1 :
                 degree = var1[i][-1]
             try :
-                
-                if int(var1[i][0]) == 0 :
+                if float(var1[i][:var1[i].index("*")]) == 0 :
                     var1.remove(var1[i])
-            except :
+            except e:
                 askdjf= 0
             i+= 1
 
+        
         # Order by degree
         oss = '^'
-        new = sorted(var1, key=lambda x: int(x[x.index(oss) + len(oss):]))
+        new = sorted(var1, key=lambda x: float(x[x.index(oss) + len(oss):]))
   
         variables = []
 
@@ -263,7 +317,7 @@ else :
     except :
         print ('Bad format')
         sys.exit()
-
+ 
 
     # The reduce form
     try :
@@ -373,7 +427,7 @@ else :
                 delt = (b*b) - (4*a*c)
 
            
-
+                print(delt)
                 if delt > 0:
      
                     print("Discriminant is strictly positive, the two solutions are: ") 
