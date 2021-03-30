@@ -180,7 +180,8 @@ else :
         print ('Bad format')
         sys.exit()
 
-   
+
+    # Switch var2 to var1
     try :
         len1 = len(puiss1)
         len2 = len(puiss2)
@@ -201,10 +202,11 @@ else :
         sys.exit()
 
 
+
     try :
  
         diff = set(exist) ^ set(puiss2)
-    
+       
         for di in diff :
             i = 0 
             while i < len(puiss2):
@@ -219,7 +221,7 @@ else :
 
 
 
-
+    # Add puissance to vaiables
     try :
 
         len_res = len(var1)
@@ -230,6 +232,7 @@ else :
             t += 1
 
 
+
         i = 0
         while i < len(var1):
             var1[i].split('*')
@@ -237,15 +240,14 @@ else :
             if len(var1) == 1 :
                 degree = var1[i][-1]
             try :
-      
-
+                
                 if int(var1[i][0]) == 0 :
                     var1.remove(var1[i])
             except :
                 askdjf= 0
             i+= 1
 
-   
+        # Order by degree
         oss = '^'
         new = sorted(var1, key=lambda x: int(x[x.index(oss) + len(oss):]))
   
@@ -263,7 +265,7 @@ else :
         sys.exit()
 
 
-
+    # The reduce form
     try :
         i = 0
         while i < len(new) :
@@ -301,6 +303,8 @@ else :
         sys.exit()
 
     print (reduce_form)
+
+    # Get degree and abc
     try :
         if 'degree' in globals() :
             print ('Polynomial degree: ' + str(degree))
@@ -330,6 +334,7 @@ else :
         sys.exit()
 
 
+    # Some math
     Q = False
     try :
         if int(degree) > 2 :
