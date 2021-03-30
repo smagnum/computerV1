@@ -306,28 +306,33 @@ else :
 
     # Get degree and abc
     try :
+
         if 'degree' in globals() :
             print ('Polynomial degree: ' + str(degree))
-
+        
         else :
-            i = 0
-            while i < len(variables):
-                if variables[i][-1] == '0' :
-                    c = variables[i].split('*')
-                    c = float(c[0])
-
-                if variables[i][-1] == '1' :
-                    b = variables[i].split('*')
-                    b = float(b[0])
-            
-                if variables[i][-1] == '2' :
-                    a = variables[i].split('*')
-                    a = float(a[0])
-                i += 1
-            
             degree = variables[-1].split('^')
             degree = degree[1]
             print ('Polynomial degree: ' + str(degree))
+        
+      
+        i = 0
+       
+        while i < len(variables):
+            if variables[i][-1] == '0' :
+                c = variables[i].split('*')
+                c = float(c[0])
+
+            if variables[i][-1] == '1' :
+                b = variables[i].split('*')
+                b = float(b[0])
+        
+            if variables[i][-1] == '2' :
+                a = variables[i].split('*')
+                a = float(a[0])
+            i += 1
+            
+            
 
     except :
         print ('Bad format')
@@ -352,7 +357,7 @@ else :
             if 'c' not in globals():
                 c = 0
 
-                    
+            
             if a == 0 and b == 0 and c == 0:
                 print ("All real numbers is a solution")
 
@@ -367,7 +372,6 @@ else :
 
                 delt = (b*b) - (4*a*c)
 
-
            
 
                 if delt > 0:
@@ -380,15 +384,16 @@ else :
                     print(round(sol2, 6)); 
 
                 elif delt == 0:
-                    print ("D == 0")
-                    print (" 3 The only solution is : ")
+                    
+                    print ("The only solution is : ")
                     print(round((-b)/(2*a), 6)); 
 
                 elif delt < 0:
-                    print ("D < 0")
+                   
                     print ("Discriminant is strictly negative, the two solutions are: ")
-                    print (str(-b / (2*a)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
-                    print (str(-b / (2*a)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)))
+                    
+                    print (str(round(-b / (2*a), 6)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
+                    print (str(round(-b / (2*a), 6)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)))
     except :
         print ('Bad format')
         sys.exit()
