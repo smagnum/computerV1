@@ -1,8 +1,5 @@
 import sys
 
-import numpy as np
-
-
 # Check duplicated item
 def duplicates(lst, item):
     return [i for i, x in enumerate(lst) if x == item]
