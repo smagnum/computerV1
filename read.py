@@ -356,18 +356,18 @@ else :
         print ('Bad format')
         sys.exit()
 
-    print (reduce_form)
+    
 
     # Get degree and abc
     try :
 
         if 'degree' in globals() :
-            print ('Polynomial degree: ' + str(degree))
+            degree_form = 'Polynomial degree: ' + str(degree)
         
         else :
             degree = variables[-1].split('^')
             degree = degree[1]
-            print ('Polynomial degree: ' + str(degree))
+            degree_form = 'Polynomial degree: ' + str(degree)
         
       
         i = 0
@@ -397,6 +397,8 @@ else :
     Q = False
     try :
         if int(degree) > 2 :
+            print (reduce_form)
+            print (degree_form)
             print ("The polynomial degree is strictly greater than 2, I can't solve.")
             Q = True
         
@@ -413,12 +415,17 @@ else :
 
             
             if a == 0 and b == 0 and c == 0:
+                print (reduce_form)
+                print (degree_form)
                 print ("All real numbers is a solution")
 
             elif a == 0 and b == 0 and c != 0:
+                print (degree_form)
                 print ("There is no solution")
 
             elif a == 0:
+                print (reduce_form)
+                print (degree_form)
                 print ("The solution is :")
                 print(round(-c/b, 6))
 
@@ -427,9 +434,10 @@ else :
                 delt = (b*b) - (4*a*c)
 
            
-                print(delt)
+                
                 if delt > 0:
-     
+                    print (reduce_form)
+                    print (degree_form)
                     print("Discriminant is strictly positive, the two solutions are: ") 
 
                     sol1 = (-b+findSqrt(delt))/(2*a) 
@@ -438,12 +446,14 @@ else :
                     print(round(sol2, 6)); 
 
                 elif delt == 0:
-                    
+                    print (reduce_form)
+                    print (degree_form)
                     print ("The only solution is : ")
                     print(round((-b)/(2*a), 6)); 
 
                 elif delt < 0:
-                   
+                    print (reduce_form)
+                    print (degree_form)
                     print ("Discriminant is strictly negative, the two solutions are: ")
                     
                     print (str(round(-b / (2*a), 6)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
