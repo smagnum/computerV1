@@ -52,6 +52,10 @@ else :
     try :
         params = params.replace('-', '+-')
         params = params.split('=')
+
+        if len(params)> 2 :
+            sys.exit()
+
         param1 = params[0].replace(' ', '')
         param2 = params[1].replace(' ', '')
     
@@ -68,7 +72,6 @@ else :
 
     param1 = param1.split('+')
     param2 = param2.split('+')
-
 
     len1 = len(param1)
     len2 = len(param2)
@@ -181,7 +184,7 @@ else :
     try :
         len1 = len(puiss1)
         len2 = len(puiss2)
-        # exist = []
+        exist = []
         k = 0
         while k < len1:
             u = 0
@@ -189,7 +192,7 @@ else :
                 if puiss1[k] == puiss2[u] :
         
                     var1[k] = float(var1[k]) - float(var2[u])
-                    # exist.append(puiss2[u])
+                    exist.append(puiss2[u])
                 u += 1
 
             k += 1
@@ -197,23 +200,22 @@ else :
         print ('Bad format')
         sys.exit()
 
-    # print (exist)
-    # print (puiss2)
-    # try :
+
+    try :
  
-    #     diff = set(exist) ^ set(puiss2)
-    #     print (diff)
-    #     for di in diff :
-    #         i = 0 
-    #         while i < len(puiss2):
-    #             if di == puiss2[i] :
+        diff = set(exist) ^ set(puiss2)
+    
+        for di in diff :
+            i = 0 
+            while i < len(puiss2):
+                if di == puiss2[i] :
            
-    #                 puiss1.append(di)
-    #                 var1.append(int(var2[i]) * -1)
-    #             i += 1
-    # except :
-    #     print ('Bad format')
-    #     sys.exit()
+                    puiss1.append(di)
+                    var1.append(int(var2[i]) * -1)
+                i += 1
+    except:
+        print ('Bad format')
+        sys.exit()
 
 
 
@@ -235,6 +237,8 @@ else :
             if len(var1) == 1 :
                 degree = var1[i][-1]
             try :
+      
+
                 if int(var1[i][0]) == 0 :
                     var1.remove(var1[i])
             except :
@@ -290,14 +294,13 @@ else :
             reduce_form += '0*X^0'
 
         reduce_form += ' = 0'
-        print (reduce_form)
         
     
     except :
         print ('Bad format')
         sys.exit()
 
-
+    print (reduce_form)
     try :
         if 'degree' in globals() :
             print ('Polynomial degree: ' + str(degree))
@@ -352,7 +355,7 @@ else :
                 print ("There is no solution")
 
             elif a == 0:
-                print (" 1 The only solution is :")
+                print ("The solution is :")
                 print(round(-c/b, 6))
 
             else:
@@ -364,7 +367,7 @@ else :
 
                 if delt > 0:
      
-                    print(" 2 The solutions is : ") 
+                    print("Discriminant is strictly positive, the two solutions are: ") 
 
                     sol1 = (-b+findSqrt(delt))/(2*a) 
                     sol2 = (-b-findSqrt(delt))/(2*a) 
@@ -378,7 +381,7 @@ else :
 
                 elif delt < 0:
                     print ("D < 0")
-                    print (" 4 The solutions is : ")
+                    print ("Discriminant is strictly negative, the two solutions are: ")
                     print (str(-b / (2*a)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)))
                     print (str(-b / (2*a)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)))
     except :
